@@ -180,6 +180,17 @@ def deletingClosureVariable():
 
 print("Using deleted non-local variable:", deletingClosureVariable())
 
+
+def emptyFunction():
+    pass
+
+
+if hasattr(emptyFunction, "__builtins__"):
+    print("Function has __builtins__")
+    print(emptyFunction.__builtins__)
+else:
+    print("Function does not have __builtins__")
+
 #     Python tests originally created or extracted from other peoples work. The
 #     parts were too small to be protected.
 #
