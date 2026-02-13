@@ -25,7 +25,7 @@ jobs:
     name: Checks
     steps:
       - name: 🛎️ Checkout (Attempt 1)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: false
@@ -40,7 +40,7 @@ jobs:
 
       - name: 🛎️ Checkout (Attempt 2)
         if: steps.checkout.outcome == 'failure'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: false
@@ -55,7 +55,7 @@ jobs:
 
       - name: 🛎️ Checkout (Attempt 3)
         if: steps.checkout_retry_1.outcome == 'failure'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: false
@@ -63,7 +63,7 @@ jobs:
         id: checkout_retry_2
 
       - name: 🐍 Use Python 3.11
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
@@ -109,7 +109,7 @@ jobs:
     name: Ubuntu Python ${{ matrix.python_version }}
     steps:
       - name: 🛎️ Checkout (Attempt 1)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: false
@@ -124,7 +124,7 @@ jobs:
 
       - name: 🛎️ Checkout (Attempt 2)
         if: steps.checkout.outcome == 'failure'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: false
@@ -139,7 +139,7 @@ jobs:
 
       - name: 🛎️ Checkout (Attempt 3)
         if: steps.checkout_retry_1.outcome == 'failure'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: false
@@ -147,7 +147,7 @@ jobs:
         id: checkout_retry_2
 
       - name: 🐍 Use Python ${{ matrix.python_version }}
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python_version }}
 
@@ -171,7 +171,7 @@ jobs:
 
       - name: 📤 Archive compilation reports for empty modules
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: compilation-reports-${{ runner.os }}-${{ matrix.python_version }}
           path: |
@@ -180,7 +180,7 @@ jobs:
             standalone-binary-ldd.txt
 
       # This can be used to ssh into GitHub actions if debugging is needed.
-      # - uses: actions/checkout@v4
+      # - uses: actions/checkout@v6
       # - name: Setup upterm session
       #   uses: lhotari/action-upterm@v1
       #   with:
@@ -207,7 +207,7 @@ jobs:
     name: macOS Python ${{ matrix.python_version }}
     steps:
       - name: 🛎️ Checkout (Attempt 1)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: false
@@ -222,7 +222,7 @@ jobs:
 
       - name: 🛎️ Checkout (Attempt 2)
         if: steps.checkout.outcome == 'failure'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: false
@@ -237,7 +237,7 @@ jobs:
 
       - name: 🛎️ Checkout (Attempt 3)
         if: steps.checkout_retry_1.outcome == 'failure'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: false
@@ -245,7 +245,7 @@ jobs:
         id: checkout_retry_2
 
       - name: 🐍 Use Python ${{ matrix.python_version }}
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python_version }}
 
@@ -276,7 +276,7 @@ jobs:
 
       - name: Archive compilation reports for empty modules
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: compilation-reports-${{ runner.os }}-${{ matrix.python_version }}
           path: |
@@ -316,7 +316,7 @@ jobs:
     name: Windows Python ${{ matrix.python_version }}
     steps:
       - name: 🛎️ Checkout (Attempt 1)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: false
@@ -331,7 +331,7 @@ jobs:
 
       - name: 🛎️ Checkout (Attempt 2)
         if: steps.checkout.outcome == 'failure'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: false
@@ -346,7 +346,7 @@ jobs:
 
       - name: 🛎️ Checkout (Attempt 3)
         if: steps.checkout_retry_1.outcome == 'failure'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: false
@@ -354,7 +354,7 @@ jobs:
         id: checkout_retry_2
 
       - name: 🐍 Use Python ${{ matrix.python_version }}
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python_version }}
 
@@ -376,7 +376,7 @@ jobs:
 
       - name: Archive compilation reports for empty modules
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: compilation-reports-${{ runner.os }}-${{ matrix.python_version }}
           path: |
